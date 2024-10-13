@@ -10,6 +10,6 @@ namespace WooxTravel.Entities
     {
         public int CategoryId { get; set; }
         public string Name { get; set; }
-        public string CategoryStatus { get; set; }
+        public bool CategoryStatus { get; set; }
     }
 }

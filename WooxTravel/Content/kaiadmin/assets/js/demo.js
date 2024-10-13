@@ -191,16 +191,16 @@ Circles.create({
 
 //Notify
 $.notify({
-	icon: 'icon-bell',
-	title: 'Kaiadmin',
-	message: 'Premium Bootstrap 5 Admin Dashboard',
+	icon: 'icon-flag',
+	title: 'WooxTravel',
+	message: ' Admin Paneline Hos Geldiniz! MGK',
 },{
 	type: 'secondary',
 	placement: {
 		from: "bottom",
-		align: "right"
+		align: "left"
 	},
-	time: 1000,
+	time: 3000,
 });
 
 // Jsvectormap

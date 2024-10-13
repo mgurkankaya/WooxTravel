@@ -129,9 +129,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminLayoutController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\TestController.cs" />
     <Compile Include="Context\TravelContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Entities\Admin.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Contact.cs" />
     <Compile Include="Entities\Destination.cs" />
@@ -146,6 +148,14 @@
     <Compile Include="Migrations\202410081831407_mig_email_column_removed_on_reservation.cs" />
     <Compile Include="Migrations\202410081831407_mig_email_column_removed_on_reservation.Designer.cs">
       <DependentUpon>202410081831407_mig_email_column_removed_on_reservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202410131927075_mig_category_status_changed_to_boolean.cs" />
+    <Compile Include="Migrations\202410131927075_mig_category_status_changed_to_boolean.Designer.cs">
+      <DependentUpon>202410131927075_mig_category_status_changed_to_boolean.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202410131956593_mig_admin_table_added.cs" />
+    <Compile Include="Migrations\202410131956593_mig_admin_table_added.Designer.cs">
+      <DependentUpon>202410131956593_mig_admin_table_added.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -667,6 +677,13 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\AdminLayout\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Test\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\PartialHead.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\PartialSidebar.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\PartialNavbar.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\PartialFooter.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\PartialThemeSettings.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\PartialScripts.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\CategoryList.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -732,6 +749,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202410081831407_mig_email_column_removed_on_reservation.resx">
       <DependentUpon>202410081831407_mig_email_column_removed_on_reservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410131927075_mig_category_status_changed_to_boolean.resx">
+      <DependentUpon>202410131927075_mig_category_status_changed_to_boolean.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410131956593_mig_admin_table_added.resx">
+      <DependentUpon>202410131956593_mig_admin_table_added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
