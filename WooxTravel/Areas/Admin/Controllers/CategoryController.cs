@@ -7,9 +7,11 @@ using WooxTravel.Context;
 
 namespace WooxTravel.Areas.Admin.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
         TravelContext context = new TravelContext();
+        
         public ActionResult CategoryList()
         {
             var values = context.Categories.ToList();

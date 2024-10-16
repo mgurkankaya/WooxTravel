@@ -1,0 +1,79 @@
+﻿@model WooxTravel.Entities.Destination
+@{
+    ViewBag.Title = "UpdateDestination";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Yeni Rota Ekleme Sayfası</div>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div class="row">
+
+                                <div class="col-md-12 col-lg-12">
+                                    @Html.HiddenFor(x => x.DestinationId)
+                                    <div class="form-group form-inline">
+                                        <label for="inlineinput"
+                                               class="col-md-3 col-form-label">Tur Başlığı</label>
+                                        <div class="col-md-12 p-0">
+                                            @Html.TextBoxFor(x => x.Title, new { @class = "form-control input-full" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-inline">
+                                        <label for="inlineinput"
+                                               class="col-md-3 col-form-label">Ülke Adı</label>
+                                        <div class="col-md-12 p-0">
+                                            @Html.TextBoxFor(x => x.Country, new { @class = "form-control input-full"})
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-inline">
+                                        <label for="inlineinput"
+                                               class="col-md-3 col-form-label">Şehir Adı</label>
+                                        <div class="col-md-12 p-0">
+                                            @Html.TextBoxFor(x => x.City, new { @class = "form-control input-full"})
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-inline">
+                                        <label for="inlineinput"
+                                               class="col-md-3 col-form-label">Gün/Gece</label>
+                                        <div class="col-md-12 p-0">
+                                            @Html.TextBoxFor(x => x.DayNight, new { @class = "form-control input-full"})
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-inline">
+                                        <label for="inlineinput"
+                                               class="col-md-3 col-form-label">Görsel</label>
+                                        <div class="col-md-12 p-0">
+                                            @Html.TextBoxFor(x => x.ImgUrl, new { @class = "form-control input-full"})
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-inline">
+                                        <label for="inlineinput"
+                                               class="col-md-3 col-form-label">Fiyat</label>
+                                        <div class="col-md-12 p-0">
+                                            @Html.TextBoxFor(x => x.Price, new { @class = "form-control input-full"})
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="comment">Comment</label>
+                                        @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @cols = 80, @rows = 10 })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <button class="btn btn-success">Güncelle</button>
+                                <a class="btn btn-danger" href="/Admin/Destination/DestinationList">İptal</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

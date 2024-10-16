@@ -53,6 +53,9 @@
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcSiteMapProvider, Version=4.6.26.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcSiteMapProvider.MVC5.Core.4.6.26\lib\net45\MvcSiteMapProvider.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -109,6 +112,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0.1\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -130,9 +136,13 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminLayoutController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DestinationController.cs" />
     <Compile Include="Areas\Admin\Controllers\TestController.cs" />
     <Compile Include="Context\TravelContext.cs" />
+    <Compile Include="Controllers\ErrorPagesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Entities\Admin.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Contact.cs" />
@@ -628,6 +638,9 @@
     <Content Include="Content\wooxtravel\vendor\jquery\jquery.min.js" />
     <Content Include="Content\wooxtravel\vendor\jquery\jquery.slim.js" />
     <Content Include="Content\wooxtravel\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="error-404\css\style.css" />
+    <Content Include="error-404\index.html" />
+    <Content Include="error-404\readme.txt" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -684,6 +697,10 @@
     <Content Include="Areas\Admin\Views\AdminLayout\PartialThemeSettings.cshtml" />
     <Content Include="Areas\Admin\Views\AdminLayout\PartialScripts.cshtml" />
     <Content Include="Areas\Admin\Views\Category\CategoryList.cshtml" />
+    <Content Include="Mvc.sitemap" />
+    <Content Include="Areas\Admin\Views\Destination\DestinationList.cshtml" />
+    <Content Include="Areas\Admin\Views\Destination\CreateDestination.cshtml" />
+    <Content Include="Areas\Admin\Views\Destination\UpdateDestination.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -709,12 +726,17 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\ErrorPages\Page404.cshtml" />
+    <Content Include="Views\ErrorPages\Page403.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Category\" />
+    <Folder Include="Views\Logib\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

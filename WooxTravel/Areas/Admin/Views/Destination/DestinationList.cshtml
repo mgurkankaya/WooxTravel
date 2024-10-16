@@ -1,0 +1,82 @@
+﻿@model List<WooxTravel.Entities.Destination>
+@{
+    ViewBag.Title = "DestinationList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+<div class="container">
+    <div class="page-inner">
+        @*<div class="page-header">
+                <h3 class="fw-bold mb-3">Tables</h3>
+                <ul class="breadcrumbs mb-3">
+                    <li class="nav-home">
+                        <a href="#">
+                            <i class="icon-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="icon-arrow-right"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Tables</a>
+                    </li>
+                    <li class="separator">
+                        <i class="icon-arrow-right"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Basic Tables</a>
+                    </li>
+                </ul>
+            </div>*@
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Kategoriler</div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-head-bg-success table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="col-2">#</th>
+                                    <th class="col-2">Ülke</th>
+                                    <th class="col-2">Şehir</th>
+                                    <th class="col-1">Gün/Gece</th>
+                                    <th class="col-1">Fiyat</th>
+                                    <th class="col-2">İncele</th>
+                                    <th class="col-4 text-center">İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <td>@count</td>
+                                        <td>@item.Country</td>
+                                        <td>@item.City</td>
+                                        <td>@item.DayNight</td>
+                                        <td>@item.Price</td>
+                                        <td><a href="@item.Title" target="_blank" class="btn btn-outline-danger">İncele</a></td>
+                                        <td class="text-center">
+                                            <a href="/Admin/Destination/UpdateDestination/@item.DestinationId" class="btn  text-primary p-3 ">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a href="/Admin/Destination/DeleteDestination/@item.DestinationId" class="btn  text-danger p-3  ">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <a href="/Admin/Destination/CreateDestination" class="btn-lg btn-primary btn-round ms-auto text-white ">
+                            <i class="fa fa-plus"></i>
+                            Yeni Ekle
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
