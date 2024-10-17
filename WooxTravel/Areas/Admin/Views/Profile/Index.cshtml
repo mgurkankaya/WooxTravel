@@ -1,0 +1,84 @@
+﻿@model WooxTravel.Entities.Admin
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h2>Index</h2>
+<div class="container">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+      
+                <div class="col-md-12">
+                    <div class="card card-profile">
+                        <div class="card-header" style="background-image: url('/Content/kaiadmin/assets/img/blogpost.jpg')">
+                            <div class="profile-picture">
+                                <div class="avatar avatar-xl">
+                                    <img src="~/Content/kaiadmin/assets/img/profile.jpg"
+                                         alt="..."
+                                         class="avatar-img rounded-circle" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                          
+                            <div class="user-profile text-center">
+                                <div class="name">@Html.HiddenFor(x=>x.AdminId)</div>
+                                <div class="name">@Html.DisplayFor(x=>x.UserName)</div>
+                                <div class="job">@Html.TextBoxFor(x => x.Name)</div>
+                                <div class="job">@Html.TextBoxFor(x => x.Surname)</div>
+                                <div class="job">@Html.TextBoxFor(x => x.Email)</div>
+                                <div class="job">@Html.PasswordFor(x => x.Password)</div>
+                                <div class="desc">A man who hates loneliness</div>
+                                <div class="social-media">
+                                    <a class="btn btn-info btn-twitter btn-sm btn-link"
+                                       href="#">
+                                        <span class="btn-label just-icon">
+                                            <i class="icon-social-twitter"></i>
+                                        </span>
+                                    </a>
+                                    <a class="btn btn-primary btn-sm btn-link"
+                                       rel="publisher"
+                                       href="#">
+                                        <span class="btn-label just-icon">
+                                            <i class="icon-social-facebook"></i>
+                                        </span>
+                                    </a>
+                                    <a class="btn btn-danger btn-sm btn-link"
+                                       rel="publisher"
+                                       href="#">
+                                        <span class="btn-label just-icon">
+                                            <i class="icon-social-instagram"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="view-profile">
+                                    <button type="submit"  class="btn btn-secondary w-100">Değişiklikleri Kaydet</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row user-stats text-center">
+                                <div class="col">
+                                    <div class="number">125</div>
+                                    <div class="title">Post</div>
+                                </div>
+                                <div class="col">
+                                    <div class="number">25K</div>
+                                    <div class="title">Followers</div>
+                                </div>
+                                <div class="col">
+                                    <div class="number">134</div>
+                                    <div class="title">Following</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -8,6 +8,7 @@ using WooxTravel.Entities;
 
 namespace WooxTravel.Areas.Admin.Controllers
 {
+    [Authorize]
     public class DestinationController : Controller
     {
         TravelContext travelContext = new TravelContext();
