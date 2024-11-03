@@ -1,0 +1,59 @@
+﻿@model List<WooxTravel.Entities.Message>
+<ul class="dropdown-menu messages-notif-box animated fadeIn"
+    aria-labelledby="messageDropdown">
+    <li>
+        <div class="dropdown-title d-flex justify-content-between align-items-center">
+            Mesajlar
+            <a href="#" class="small">Hepsi okundu işaretle.</a>
+        </div>
+    </li>
+    <li>
+        <div class="message-notif-scroll scrollbar-outer">
+            <div class="notif-center">
+                @foreach (var item in Model)
+                {
+                    TimeSpan dateResult = (DateTime.Now - item.SendDate);
+                    double totalSeconds = dateResult.TotalSeconds;
+                    string timeMessage;
+                    if (totalSeconds < 60)
+                    {
+                        timeMessage = $"{(int)totalSeconds} saniye önce";
+                    }
+                    else if (totalSeconds < 3600)
+                    {
+                        int minutes = (int)(totalSeconds / 60);
+                        timeMessage = $"{minutes} dakika önce";
+                    }
+                    else if (totalSeconds < 86400)
+                    {
+                        int hours = (int)(totalSeconds / 3600);
+                        timeMessage = $"{hours} saat önce";
+                    }
+                    else
+                    {
+                        int days = (int)(totalSeconds / 86400);
+                        timeMessage = $"{days} gün önce";
+                    }
+
+
+                    <a href="#">
+                        <div class="notif-img">
+                            <img src="https://static-00.iconduck.com/assets.00/message-icon-2048x1580-bxa8gmc6.png"
+                                 alt="Img Profile" />
+                        </div>
+                        <div class="notif-content">
+                            <span class="subject">@item.Subject</span>
+                            <span class="block"> @item.SenderMail </span>
+                            <span class="time">@timeMessage</span>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+    </li>
+    <li>
+        <a class="see-all" href="/Admin/Message/Inbox">
+            Bütün mesajları gör<i class="fa fa-angle-right"></i>
+        </a>
+    </li>
+</ul>

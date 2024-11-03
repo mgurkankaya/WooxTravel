@@ -1,4 +1,4 @@
-﻿@model List<WooxTravel.Entities.Destination>
+﻿@model WooxTravel.Areas.Admin.Model.MyViewModel
 @{
     ViewBag.Title = "DestinationList";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
@@ -32,7 +32,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Kategoriler</div>
+                        <div class="card-title">Rotalar</div>
                     </div>
                     <div class="card-body">
                         <table class="table table-head-bg-warning table-hover">
@@ -48,7 +48,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in Model)
+                                @foreach (var item in Model.Destinations)
                                 {
                                     count++;
                                     <tr>

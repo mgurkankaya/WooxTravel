@@ -1,0 +1,53 @@
+﻿@model WooxTravel.Entities.Message
+@{
+    ViewBag.Title = "Compose";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Yeni Mesaj</div>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-12">
+                                    <div class="form-group form-inline">
+                                        <label for="inlineinput"
+                                               class="col-md-3 col-form-label">Kime</label>
+                                        <div class="col-md-12 p-0">
+                                            @Html.TextBoxFor(x => x.SenderMail, new { @class = "form-control input-full", @placeholder = "alici@mail.com" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-inline">
+                                        <label for="inlineinput"
+                                               class="col-md-3 col-form-label">Konu</label>
+                                        <div class="col-md-12 p-0">
+                                            @Html.TextBoxFor(x => x.Subject, new { @class = "form-control input-full", @placeholder = "Konu..." })
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-inline">
+                                        <label for="inlineinput"
+                                               class="col-md-3 col-form-label">Mesaj</label>
+                                        <div class="col-md-12 p-0">
+                                            @Html.TextBoxFor(x => x.Content, new { @class = "form-control input-full", @placeholder = "Mesajı yazın..." })
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <button class="btn btn-success">Gönder</button>
+                                <a class="btn btn-danger" href="/Admin/Message/Inbox">İptal</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

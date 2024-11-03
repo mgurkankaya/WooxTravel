@@ -189,19 +189,19 @@ Circles.create({
 	styleText:    true
 })
 
-//Notify
-$.notify({
-	icon: 'icon-flag',
-	title: 'WooxTravel',
-	message: ' Admin Paneline Hos Geldiniz! MGK',
-},{
-	type: 'secondary',
-	placement: {
-		from: "bottom",
-		align: "left"
-	},
-	time: 3000,
-});
+////Notify
+//$.notify({
+//	icon: 'icon-flag',
+//	title: 'WooxTravel',
+//	message: ' Admin Paneline Hos Geldiniz! MGK',
+//},{
+//	type: 'secondary',
+//	placement: {
+//		from: "bottom",
+//		align: "left"
+//	},
+//	time: 3000,
+//});
 
 // Jsvectormap
 var world_map = new jsVectorMap({

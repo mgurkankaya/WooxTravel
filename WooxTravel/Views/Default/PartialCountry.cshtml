@@ -1,9 +1,13 @@
-﻿<div class="visit-country">
-    <div class="container">
+﻿@using WooxTravel.Entities
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Destination>
+<div class="visit-country bg-white pt-5">
+    <div class="container ">
         <div class="row">
             <div class="col-lg-5">
                 <div class="section-heading">
-                    <h2>Visit One Of Our Countries Now</h2>
+                    <h2>Popüler Tur ve Seyehat Rotalarımız</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
                 </div>
             </div>
@@ -12,106 +16,56 @@
             <div class="col-lg-12">
                 <div class="items">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <div class="item">
-                                <div class="row">
-                                    <div class="col-lg-4 col-sm-5">
-                                        <div class="image">
-                                            <img src="~/Content/wooxtravel/assets/images/country-01.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8 col-sm-7">
-                                        <div class="right-content">
-                                            <h4>SWITZERLAND</h4>
-                                            <span>Europe</span>
-                                            <div class="main-button">
-                                                <a href="about.html">Explore More</a>
-                                            </div>
-                                            <p>Woox Travel is a professional Bootstrap 5 theme HTML CSS layout for your website. You can use this layout for your commercial work.</p>
-                                            <ul class="info">
-                                                <li><i class="fa fa-user"></i> 8.66 Mil People</li>
-                                                <li><i class="fa fa-globe"></i> 41.290 km2</li>
-                                                <li><i class="fa fa-home"></i> $1.100.200</li>
-                                            </ul>
-                                            <div class="text-button">
-                                                <a href="about.html">Need Directions ? <i class="fa fa-arrow-right"></i></a>
+                        @foreach (var item in Model)
+                        {
+                            var aciklama = item.Description;
+                            string aciklamaYazdir = aciklama.Length > 200 ? aciklama.Substring(0, 200) : aciklama;
+                            <div class="col-lg-12">
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-sm-5">
+                                            <div class="image">
+                                                <img src="@item.ImgUrl" alt="">
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="item">
-                                <div class="row">
-                                    <div class="col-lg-4 col-sm-5">
-                                        <div class="image">
-                                            <img src="~/Content/wooxtravel/assets/images/country-02.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8 col-sm-7">
-                                        <div class="right-content">
-                                            <h4>CARIBBEAN</h4>
-                                            <span>North America</span>
-                                            <div class="main-button">
-                                                <a href="about.html">Explore More</a>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
-                                            <ul class="info">
-                                                <li><i class="fa fa-user"></i> 44.48 Mil People</li>
-                                                <li><i class="fa fa-globe"></i> 275.400 km2</li>
-                                                <li><i class="fa fa-home"></i> $946.000</li>
-                                            </ul>
-                                            <div class="text-button">
-                                                <a href="about.html">Need Directions ? <i class="fa fa-arrow-right"></i></a>
+                                        <div class="col-lg-8 col-sm-7">
+                                            <div class="right-content">
+                                                <h4>@item.Country</h4>
+                                                <span>@item.City</span>
+                                                <div class="main-button">
+                                                    <a href="/Default/DestinationDetail/@item.DestinationId">Detay</a>
+                                                </div>
+                                                <p>
+                                                    @aciklamaYazdir
+                                                </p>
+                                                <ul class="info">
+                                                    <li><i class="fa fa-calendar"></i> @item.DayNight Gün - @(item.DayNight -1 ) Gece</li>
+                                                    <li><i class="fa fa-money-bill"></i> @item.Price ₺</li>
+                                                    <li><i class="fa fa-bar-chart"></i> @item.Capacity Kişi</li>
+                                                </ul>
+                                                <div class="text-button">
+                                                    <a href="about.html">Rehberi görün <i class="fa fa-person fa-xl"></i></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="item last-item">
-                                <div class="row">
-                                    <div class="col-lg-4 col-sm-5">
-                                        <div class="image">
-                                            <img src="~/Content/wooxtravel/assets/images/country-03.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8 col-sm-7">
-                                        <div class="right-content">
-                                            <h4>FRANCE</h4>
-                                            <span>Europe</span>
-                                            <div class="main-button">
-                                                <a href="about.html">Explore More</a>
-                                            </div>
-                                            <p>We hope this WoOx template is useful for you, please support us a <a href="https://paypal.me/templatemo" target="_blank">small amount of PayPal</a> to info [at] templatemo.com for our survival. We really appreciate your contribution.</p>
-                                            <ul class="info">
-                                                <li><i class="fa fa-user"></i> 67.41 Mil People</li>
-                                                <li><i class="fa fa-globe"></i> 551.500 km2</li>
-                                                <li><i class="fa fa-home"></i> $425.600</li>
-                                            </ul>
-                                            <div class="text-button">
-                                                <a href="about.html">Need Directions ? <i class="fa fa-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
+                        }
+                        <div class="col-lg-12  ">
                             <ul class="page-numbers">
-                                <li><a href="#"><i class="fa fa-arrow-left"></i></a></li>
-                                <li><a href="#">1</a></li>
-                                <li class="active"><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
+                                @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+                           {
+                               LiElementClasses = new List<string> { "mb-3" },
+                               MaximumPageNumbersToDisplay = 3,
+                               DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+                               DisplayLinkToLastPage = PagedListDisplayMode.Never
+                           })  
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-          
         </div>
     </div>
 </div>

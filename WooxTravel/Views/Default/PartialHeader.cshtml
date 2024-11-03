@@ -1,16 +1,4 @@
-﻿  <!-- ***** Preloader Start ***** -->
-<div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-        <span class="dot"></span>
-        <div class="dots">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-</div>
-<!-- ***** Preloader End ***** -->
-<header class="header-area header-sticky">
+﻿<header class="header-area header-sticky">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -22,11 +10,17 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="index.html" class="active">Anasayfa</a></li>
-                        <li><a href="about.html">Hakkımızda</a></li>
-                        <li><a href="deals.html">Rotalar</a></li>
-                        <li><a href="reservation.html">Rezervasyon</a></li>
-                        <li><a href="reservation.html">Kayıt Ol</a></li>
+                        <li><a href="/Default/Index" class="active">Anasayfa</a></li>
+                        <!-- Kullanıcı Giriş Açılır Menüsü -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user"></i> <!-- Giriş İkonu -->
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" target="_blank" href="/Login/Index">Giriş Yap</a></li>
+                                <li><a class="dropdown-item" target="_blank" href="/Register/Index">Üye Ol</a></li>
+                            </ul>
+                        </li>
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -37,3 +31,39 @@
         </div>
     </div>
 </header>
+
+<!-- Font Awesome ve Bootstrap CSS/JS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+    /* Ana menü öğeleri ve kullanıcı ikonu beyaz renk */
+    .main-nav .nav a,
+    .main-nav .fa-user {
+        color: #ffffff !important;
+    }
+
+    /* Dropdown menüdeki bağlantılar için renk ayarı */
+    .main-nav .dropdown-menu a {
+        color: #22B3C1 !important;
+    }
+
+        /* Dropdown menüdeki bağlantılarda hover efekti */
+        .main-nav .dropdown-menu a:hover {
+            background-color: #e3f2f5;
+            color: #22B3C1 !important;
+        }
+
+    /* Dropdown menü hizalaması */
+    .dropdown-menu {
+        min-width: 150px;
+    }
+
+    /* Menü hizalaması */
+    .main-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+</style>

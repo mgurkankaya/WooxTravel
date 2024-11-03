@@ -1,0 +1,14 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="tr">
+@Html.Action("PartialHead", "Default")
+<body>
+    @Html.Action("PartialHeader", "Default")
+    @RenderBody()
+    @Html.Action("PartialCallToAction", "Default")
+    @Html.Action("PartialFooter", "Default")
+    @Html.Action("PartialScript", "Default")
+</body>
+</html>

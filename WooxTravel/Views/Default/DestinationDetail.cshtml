@@ -1,0 +1,172 @@
+﻿@model WooxTravel.Entities.Destination
+@{
+    ViewBag.Title = "DestinationDetail";
+    Layout = "~/Views/Shared/_WooxLayout.cshtml";
+}
+
+<div class="second-page-heading" style="background-image: url('@Model.ImgUrl') !important; padding: 60px 0; text-align: center;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mt-5">
+                <h4>@Model.City</h4>
+                <h2>@Model.Country</h2>
+                <p>@Model.Title</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="reservation-form mt-0 py-5">
+    <div class="container bg-white p-4 shadow-lg" style="border-radius: 10px;">
+        <div class="row">
+            <div class="col-md-8 d-flex align-items-start text-black-50" style="padding-right: 20px;">
+                <p style="font-size:18px !important;">
+                    @Model.Description 
+                </p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="@Model.ImgUrl" style="width: 100%; height: auto; border: 2px solid #ddd; border-radius: 10px; padding: 5px; margin-bottom: 15px;" class="img-fluid" alt="Fotoğraf">
+                <!-- Modal açan buton -->
+                <button type="button" class="btn btn-custom mb-4" data-bs-toggle="modal" data-bs-target="#reservationModal">Rezervasyon Yap</button>
+
+                <div class="card shadow-sm border-0 mb-3" style="border-radius: 10px;">
+                    <div class="card-header text-white" style="background-image: linear-gradient(135deg, #22B3C1, #0D7377); border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                        <h5 class="card-title mb-0">Gün/Gece</h5>
+                    </div>
+                    <div class="card-body" style="background-color: #f0f8f8;">
+                        <p class="card-text">@Model.DayNight</p>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm border-0 mb-3" style="border-radius: 10px;">
+                    <div class="card-header text-white" style="background-image: linear-gradient(135deg, #FF7E5F, #FEB47B); border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                        <h5 class="card-title mb-0">Fiyat</h5>
+                    </div>
+                    <div class="card-body" style="background-color: #fff7f3;">
+                        <p class="card-text">@Model.Price</p>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm border-0" style="border-radius: 10px;">
+                    <div class="card-header text-white" style="background-image: linear-gradient(135deg, #6A11CB, #2575FC); border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                        <h5 class="card-title mb-0">Kapasite</h5>
+                    </div>
+                    <div class="card-body" style="background-color: #eef3ff;">
+                        <p class="card-text">@Model.Capacity</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reservationModalLabel">Rezervasyon Yap</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-black-50">
+                <form id="reservationForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">İsim Soyisim</label>
+                        <input type="text" class="form-control" id="name" name="Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Telefon</label>
+                        <input type="tel" class="form-control" id="phone" name="Phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="guests" class="form-label">Kişi Sayısı</label>
+                        <input type="number" class="form-control" id="guests" name="PersonCount" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Rezervasyon Tarihi</label>
+                        <input type="date" class="form-control" id="date" name="ReservationDate" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Açıklama</label>
+                        <textarea class="form-control" id="description" name="Description" rows="3"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                        <button type="submit" class="btn btn-primary">Gönder</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .btn-custom {
+        background-color: #22B3C1;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .btn-custom:hover {
+            background-color: #1a8a98;
+            color: white;
+        }
+</style>
+
+
+<script>
+    $(document).ready(function () {
+        $("#reservationForm").on("submit", function (e) {
+            e.preventDefault(); // Formun sayfa yenilenmeden gönderilmesini sağla
+
+            $.ajax({
+                url: "/Default/Reservation", // Controller Action URL
+                type: "POST",
+                data: $(this).serialize(),
+                success: function (response) {
+                    if (response.success) {
+                        $('#reservationModal').modal('hide'); // Rezervasyon modalını kapat
+
+                        // Başarı mesajını gösteren modal aç
+                        $('#successModal').modal('show');
+
+                        // Başarı modalı kapandıktan sonra yönlendirme
+                        $('#successModal').on('hidden.bs.modal', function () {
+                            window.location.href = "/Default/DestinationDetail/@Model.DestinationId"; // Ana sayfaya yönlendirme
+                        });
+                    } else {
+                        alert(response.message); // Başarısız mesajı göster
+                    }
+                },
+                error: function () {
+                    alert("Sunucuyla bağlantıda bir sorun oluştu.");
+                }
+            });
+        });
+    });
+</script>
+
+<!-- Başarı Mesajı için Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Başarılı</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Rezervasyonunuz başarıyla oluşturuldu.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>

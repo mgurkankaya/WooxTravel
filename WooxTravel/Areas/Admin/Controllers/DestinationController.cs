@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WooxTravel.Areas.Admin.Model;
 using WooxTravel.Context;
 using WooxTravel.Entities;
 
@@ -14,8 +15,12 @@ namespace WooxTravel.Areas.Admin.Controllers
         TravelContext travelContext = new TravelContext();
         public ActionResult DestinationList()
         {
-            var value = travelContext.Destinations.ToList();
-            return View(value);
+            var model = new MyViewModel
+            {
+                Destinations = travelContext.Destinations.ToList()
+            };
+           
+            return View(model);
         }
         public ActionResult CreateDestination()
         {

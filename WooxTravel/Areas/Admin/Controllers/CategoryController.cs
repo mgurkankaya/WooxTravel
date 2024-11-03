@@ -17,5 +17,13 @@ namespace WooxTravel.Areas.Admin.Controllers
             var values = context.Categories.ToList();
             return View(values);
         }
+
+        public ActionResult DeleteCategory(int id)
+        {
+            var value = context.Categories.Find(id);
+            context.Categories.Remove(value);
+            context.SaveChanges();
+            return RedirectToAction("CategoryList", "Category", "Admin");
+        }
     }
 }

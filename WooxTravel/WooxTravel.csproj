@@ -56,6 +56,12 @@
     <Reference Include="MvcSiteMapProvider, Version=4.6.26.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
       <HintPath>..\packages\MvcSiteMapProvider.MVC5.Core.4.6.26\lib\net45\MvcSiteMapProvider.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -137,8 +143,10 @@
     <Compile Include="Areas\Admin\Controllers\AdminLayoutController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\DestinationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MessageController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Admin\Controllers\TestController.cs" />
+    <Compile Include="Areas\Admin\Model\MyViewModel.cs" />
     <Compile Include="Context\TravelContext.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\ErrorPagesController.cs" />
@@ -149,6 +157,7 @@
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Contact.cs" />
     <Compile Include="Entities\Destination.cs" />
+    <Compile Include="Entities\Message.cs" />
     <Compile Include="Entities\Reservation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -168,6 +177,14 @@
     <Compile Include="Migrations\202410131956593_mig_admin_table_added.cs" />
     <Compile Include="Migrations\202410131956593_mig_admin_table_added.Designer.cs">
       <DependentUpon>202410131956593_mig_admin_table_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202410221732590_capacity_column_added_on_destination_table.cs" />
+    <Compile Include="Migrations\202410221732590_capacity_column_added_on_destination_table.Designer.cs">
+      <DependentUpon>202410221732590_capacity_column_added_on_destination_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202410221744370_mig_message_table_added.cs" />
+    <Compile Include="Migrations\202410221744370_mig_message_table_added.Designer.cs">
+      <DependentUpon>202410221744370_mig_message_table_added.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -195,6 +212,7 @@
     <Content Include="Content\kaiadmin\assets\css\fonts.min.css" />
     <Content Include="Content\kaiadmin\assets\css\kaiadmin.css" />
     <Content Include="Content\kaiadmin\assets\css\kaiadmin.min.css" />
+    <Content Include="Content\kaiadmin\assets\css\mailboxstyle.css" />
     <Content Include="Content\kaiadmin\assets\css\plugins.css" />
     <Content Include="Content\kaiadmin\assets\css\plugins.min.css" />
     <Content Include="Content\kaiadmin\assets\fonts\fontawesome\fa-brands-400.svg" />
@@ -590,6 +608,7 @@
     <Content Include="Content\kaiadmin\tables\datatables.html" />
     <Content Include="Content\kaiadmin\tables\tables.html" />
     <Content Include="Content\kaiadmin\widgets.html" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\wooxtravel\about.html" />
     <Content Include="Content\wooxtravel\assets\css\animate.css" />
     <Content Include="Content\wooxtravel\assets\css\flex-slider.css" />
@@ -704,6 +723,13 @@
     <Content Include="Areas\Admin\Views\Destination\CreateDestination.cshtml" />
     <Content Include="Areas\Admin\Views\Destination\UpdateDestination.cshtml" />
     <Content Include="Areas\Admin\Views\Profile\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Message\Inbox.cshtml" />
+    <Content Include="Areas\Admin\Views\Message\Sendbox.cshtml" />
+    <Content Include="Areas\Admin\Views\Message\Compose.cshtml" />
+    <Content Include="Areas\Admin\Views\Message\Trash.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\PartialMessagesInNavbar.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\PartialDestinationsInNavbar.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\AdminInfoInNavbar.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -733,7 +759,6 @@
     <Content Include="Views\ErrorPages\Page403.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Default\PartialHead.cshtml" />
     <Content Include="Views\Default\PartialHeader.cshtml" />
     <Content Include="Views\Default\PartialFooter.cshtml" />
@@ -741,6 +766,9 @@
     <Content Include="Views\Default\PartialFeature.cshtml" />
     <Content Include="Views\Default\PartialCountry.cshtml" />
     <Content Include="Views\Default\PartialCallToAction.cshtml" />
+    <Content Include="Views\Shared\_WooxLayout.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Default\DestinationDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -788,6 +816,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202410131956593_mig_admin_table_added.resx">
       <DependentUpon>202410131956593_mig_admin_table_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410221732590_capacity_column_added_on_destination_table.resx">
+      <DependentUpon>202410221732590_capacity_column_added_on_destination_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410221744370_mig_message_table_added.resx">
+      <DependentUpon>202410221744370_mig_message_table_added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
