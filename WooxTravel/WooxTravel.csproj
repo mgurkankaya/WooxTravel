@@ -142,6 +142,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminLayoutController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\DestinationController.cs" />
     <Compile Include="Areas\Admin\Controllers\MessageController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
@@ -185,6 +186,10 @@
     <Compile Include="Migrations\202410221744370_mig_message_table_added.cs" />
     <Compile Include="Migrations\202410221744370_mig_message_table_added.Designer.cs">
       <DependentUpon>202410221744370_mig_message_table_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202411042023156_price-column-converted-to-int.cs" />
+    <Compile Include="Migrations\202411042023156_price-column-converted-to-int.Designer.cs">
+      <DependentUpon>202411042023156_price-column-converted-to-int.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -730,6 +735,7 @@
     <Content Include="Areas\Admin\Views\AdminLayout\PartialMessagesInNavbar.cshtml" />
     <Content Include="Areas\Admin\Views\AdminLayout\PartialDestinationsInNavbar.cshtml" />
     <Content Include="Areas\Admin\Views\AdminLayout\AdminInfoInNavbar.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -822,6 +828,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202410221744370_mig_message_table_added.resx">
       <DependentUpon>202410221744370_mig_message_table_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411042023156_price-column-converted-to-int.resx">
+      <DependentUpon>202411042023156_price-column-converted-to-int.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
