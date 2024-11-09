@@ -1,0 +1,39 @@
+﻿@model WooxTravel.Entities.Category
+@{
+    ViewBag.Title = "CreateCategory";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Yeni Kategori Ekleme Sayfası</div>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-12">
+                                    <div class="form-group form-inline">
+                                        <label for="inlineinput"
+                                               class="col-md-3 col-form-label">Kategori Başlığı</label>
+                                        <div class="col-md-12 p-0">
+                                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control input-full", @placeholder = "Tur kategorisi başlığı girin..." })
+                                        </div>
+                                    </div>
+                                 
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <button class="btn btn-success">Ekle</button>
+                                <a class="btn btn-danger" href="/Admin/Category/CategoryList">İptal</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

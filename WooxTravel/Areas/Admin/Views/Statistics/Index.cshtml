@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <div class="page-inner">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">İstatistikler</div>
+                    </div>
+                    <div class="card-body">
+
+
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <canvas id="destinationsChart"></canvas>
+                                </div>
+                                <div class="col-md-6">
+                                    <canvas id="messagesChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <canvas id="categoriesChart"></canvas>
+                                </div>
+                                <div class="col-md-6">
+                                    <canvas id="reservationsChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Ülkelere göre varış noktaları grafiği
+var destinationsData = @Html.Raw(Json.Encode(ViewBag.DestinationsData));
+new Chart(document.getElementById('destinationsChart'), {
+    type: 'bar',
+    data: {
+        labels: destinationsData.map(data => data.Country),
+        datasets: [{
+            label: 'Varış Noktaları',
+            data: destinationsData.map(data => data.Count),
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    }
+});
+
+// Okunmuş ve okunmamış mesajlar grafiği
+var messagesData = @Html.Raw(Json.Encode(ViewBag.MessagesData));
+new Chart(document.getElementById('messagesChart'), {
+    type: 'pie',
+    data: {
+        labels: messagesData.map(data => data.Status),
+        datasets: [{
+            label: 'Mesajlar',
+            data: messagesData.map(data => data.Count),
+            backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+            borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
+            borderWidth: 1
+        }]
+    }
+});
+
+// Kategori durumuna göre kategoriler grafiği
+var categoriesData = @Html.Raw(Json.Encode(ViewBag.CategoriesData));
+new Chart(document.getElementById('categoriesChart'), {
+    type: 'doughnut',
+    data: {
+        labels: categoriesData.map(data => data.Status),
+        datasets: [{
+            label: 'Kategoriler',
+            data: categoriesData.map(data => data.Count),
+            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            borderColor: 'rgba(153, 102, 255, 1)',
+            borderWidth: 1
+        }]
+    }
+});
+
+// Günlük rezervasyon sayısı grafiği
+var reservationsData = @Html.Raw(Json.Encode(ViewBag.ReservationsData));
+new Chart(document.getElementById('reservationsChart'), {
+    type: 'line',
+    data: {
+        labels: reservationsData.map(data => new Date(data.Date).toLocaleDateString()),
+        datasets: [{
+            label: 'Rezervasyonlar',
+            data: reservationsData.map(data => data.Count),
+            backgroundColor: 'rgba(255, 206, 86, 0.2)',
+            borderColor: 'rgba(255, 206, 86, 1)',
+            borderWidth: 1
+        }]
+    }
+});
+</script>

@@ -4,31 +4,8 @@
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
     int count = 0;
 }
-
 <div class="container">
     <div class="page-inner">
-        @*<div class="page-header">
-            <h3 class="fw-bold mb-3">Tables</h3>
-            <ul class="breadcrumbs mb-3">
-                <li class="nav-home">
-                    <a href="#">
-                        <i class="icon-home"></i>
-                    </a>
-                </li>
-                <li class="separator">
-                    <i class="icon-arrow-right"></i>
-                </li>
-                <li class="nav-item">
-                    <a href="#">Tables</a>
-                </li>
-                <li class="separator">
-                    <i class="icon-arrow-right"></i>
-                </li>
-                <li class="nav-item">
-                    <a href="#">Basic Tables</a>
-                </li>
-            </ul>
-        </div>*@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -53,18 +30,16 @@
                                         <td>@count</td>
                                         <td>@item.Name</td>
                                         <td class="text-center">
-                                                <a href="#" class="btn-lg text-primary">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                                <a class="btn-lg text-danger" onclick="DeleteCategory(@item.CategoryId)"><i class="fa fa-times"></i></a>
-
+                                            <a href="/Admin/Category/UpdateCategory/@item.CategoryId" class="btn-lg text-primary">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a class="btn-lg text-danger" onclick="DeleteCategory(@item.CategoryId)"><i class="fa fa-times"></i></a>
                                         </td>
                                     </tr>
                                 }
                             </tbody>
-
                         </table>
-                        <a href="#" class="btn-lg btn-primary btn-round ms-auto    text-white ">
+                        <a href="/Admin/Category/CreateCategory" class="btn-lg btn-primary btn-round ms-auto    text-white ">
                             <i class="fa fa-plus"></i>
                             Yeni Ekle
                         </a>
@@ -75,12 +50,8 @@
         </div>
     </div>
 </div>
-
-
 <script>
-
     function DeleteCategory(id) {
-
         Swal.fire({
             title: "Silmek istediğinize emin misiniz?",
             text: "Bu işlemi geri alamazsınız!",
@@ -92,13 +63,8 @@
             cancelButtonText: "İptal"
         }).then((result) => {
             if (result.isConfirmed) {
-
                 window.location.href = "/Admin/Category/DeleteCategory/" + id;
-
             }
         });
-
     }
-
-
 </script>
