@@ -1,6 +1,8 @@
 # WooxTravel 🌍✈️
 WooxTravel, seyahat rehberleri, varış noktaları ve tur paketleri yönetimi sağlayan bir ASP.NET MVC tabanlı uygulamadır. Yönetici paneli ile çeşitli istatistiksel verilere ulaşabilir, rotalar, kategoriler ve mesajlar gibi içeriklerin yönetimini kolayca gerçekleştirebilirsiniz. Kullanıcı dostu arayüzü ve güçlü özellikleriyle seyahat planlamanızı daha verimli hale getirin!
 
+Linkedin profilim için ([tıklayın](https://www.linkedin.com/in/m-gürkan-kaya-267462273/))
+
 ##  🚀 Özellikler
 → ** Kapsamlı Seyahat Yönetimi: Kategorilere göre tur ve varış noktalarının yönetimi.
 
